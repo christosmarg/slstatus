@@ -64,13 +64,18 @@ static const char unknown_str[] = "n/a";
 static const struct arg args[] = {
 	/* function     format          argument */
         { keymap,       "%s | ",        NULL},
+#ifdef __FreeBSD__
         { vol_perc,     "vol: %s%% | ", "/dev/mixer" },
+#endif /* __FreeBSD__ */
         { ram_perc,     "ram: %s%% | ", NULL},
         { cpu_perc,     "cpu: %s%% | ", NULL },
-        //{ netspeed_rx,  "%sB/",         "re0" },
-        //{ netspeed_tx,  "%sB | ",       "re0" },
+#ifdef __FreeBSD__
+        { netspeed_rx,  "%sB/",         "re0" },
+        { netspeed_tx,  "%sB | ",       "re0" },
+#else /* !__FreeBSD__ */
         { netspeed_rx,  "%sB/",         "wlp6s0" },
         { netspeed_tx,  "%sB | ",       "wlp6s0" },
         { battery_perc, "bat: %s%% | ", "BAT0" },
-	{ datetime,     "%s",           "%d-%m-%Y (%a) %H:%M" },
+#endif /* __FreeBSD__ */
+        { datetime,     "%s",           "%d-%m-%Y (%a) %H:%M" },
 };
