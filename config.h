@@ -69,13 +69,13 @@ static const struct arg args[] = {
 #endif /* __FreeBSD__ */
         { ram_perc,     "ram: %s%% | ", NULL},
         { cpu_perc,     "cpu: %s%% | ", NULL },
-#ifdef __FreeBSD__
-        { netspeed_rx,  "%sB/",         "re0" },
-        { netspeed_tx,  "%sB | ",       "re0" },
-#else /* !__FreeBSD__ */
+#ifdef __linux__
         { netspeed_rx,  "%sB/",         "wlp6s0" },
         { netspeed_tx,  "%sB | ",       "wlp6s0" },
         { battery_perc, "bat: %s%% | ", "BAT0" },
-#endif /* __FreeBSD__ */
+#else /* !__linux__*/
+        { netspeed_rx,  "%sB/",         "re0" },
+        { netspeed_tx,  "%sB | ",       "re0" },
+#endif /* __linux__ */
         { datetime,     "%s",           "%d-%m-%Y (%a) %H:%M" },
 };

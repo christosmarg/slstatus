@@ -19,9 +19,8 @@ num_files(const char *path)
 
 	num = 0;
 	while ((dp = readdir(fd))) {
-		if (!strcmp(dp->d_name, ".") || !strcmp(dp->d_name, "..")) {
+		if (!strcmp(dp->d_name, ".") || !strcmp(dp->d_name, ".."))
 			continue; /* skip self and parent */
-		}
 		num++;
 	}
 

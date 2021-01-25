@@ -4,11 +4,11 @@
 #include <stdio.h>
 #include <string.h>
 #if defined(__OpenBSD__)
-	#include <sys/types.h>
-	#include <sys/socket.h>
+#include <sys/types.h>
+#include <sys/socket.h>
 #elif defined(__FreeBSD__)
-	#include <netinet/in.h>
-	#include <sys/socket.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
 #endif
 
 #include "../util.h"
@@ -26,9 +26,8 @@ ip(const char *interface, unsigned short sa_family)
 	}
 
 	for (ifa = ifaddr; ifa != NULL; ifa = ifa->ifa_next) {
-		if (!ifa->ifa_addr) {
+		if (!ifa->ifa_addr)
 			continue;
-		}
 		s = getnameinfo(ifa->ifa_addr, sizeof(struct sockaddr_in6),
 		                host, NI_MAXHOST, NULL, 0, NI_NUMERICHOST);
 		if (!strcmp(ifa->ifa_name, interface) &&

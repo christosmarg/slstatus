@@ -19,12 +19,10 @@ run_command(const char *cmd)
 		warn("pclose '%s':", cmd);
 		return NULL;
 	}
-	if (!p) {
+	if (!p)
 		return NULL;
-	}
-	if ((p = strrchr(buf, '\n'))) {
+	if ((p = strrchr(buf, '\n')))
 		p[0] = '\0';
-	}
 
 	return buf[0] ? buf : NULL;
 }

@@ -79,9 +79,8 @@ keymap(void)
 	XFree(symbols);
 end:
 	XkbFreeKeyboard(desc, XkbSymbolsNameMask, 1);
-	if (XCloseDisplay(dpy)) {
+	if (XCloseDisplay(dpy))
 		warn("XCloseDisplay: Failed to close display");
-	}
 
 	return layout;
 }

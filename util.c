@@ -13,18 +13,16 @@ char *argv0;
 static void
 verr(const char *fmt, va_list ap)
 {
-	if (argv0 && strncmp(fmt, "usage", sizeof("usage") - 1)) {
+	if (argv0 && strncmp(fmt, "usage", sizeof("usage") - 1))
 		fprintf(stderr, "%s: ", argv0);
-	}
 
 	vfprintf(stderr, fmt, ap);
 
 	if (fmt[0] && fmt[strlen(fmt) - 1] == ':') {
 		fputc(' ', stderr);
 		perror(NULL);
-	} else {
+	} else
 		fputc('\n', stderr);
-	}
 }
 
 void
@@ -119,9 +117,8 @@ fmt_human(uintmax_t num, int base)
 	}
 
 	scaled = num;
-	for (i = 0; i < prefixlen && scaled >= base; i++) {
+	for (i = 0; i < prefixlen && scaled >= base; i++)
 		scaled /= base;
-	}
 
 	return bprintf("%.1f %s", scaled, prefix[i]);
 }
